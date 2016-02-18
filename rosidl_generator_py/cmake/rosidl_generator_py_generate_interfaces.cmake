@@ -45,6 +45,10 @@ foreach(_extension IN LISTS AMENT_EXTENSIONS_rosidl_generate_interfaces)
   endif()
 endforeach()
 
+if (_typesupport_impls STREQUAL "" )
+  message(FATAL_ERROR "No valid typesupport implementations found.")
+endif()
+
 set(_output_path
   "${CMAKE_CURRENT_BINARY_DIR}/rosidl_generator_py/${PROJECT_NAME}")
 set(_generated_msg_py_files "")
