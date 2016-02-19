@@ -45,7 +45,7 @@ foreach(_extension IN LISTS AMENT_EXTENSIONS_rosidl_generate_interfaces)
   endif()
 endforeach()
 
-if ("${_typesupport_impls} " STREQUAL " " )
+if("${_typesupport_impls} " STREQUAL " ")
   message(WARNING "No valid typesupport implementations found.")
   return()
 endif()
