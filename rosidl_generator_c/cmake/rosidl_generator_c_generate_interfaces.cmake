@@ -49,8 +49,10 @@ foreach(_idl_file ${rosidl_generate_interfaces_c_IDL_FILES})
       )
     endif()
   elseif("${_extension} " STREQUAL ".srv ")
-    # no generated code for services
-    # only for the request / response messages
+    list(APPEND _generated_srv_headers
+      "${_output_path}/${_parent_folder}/${_header_name}.h"
+    )
+
   else()
     list(REMOVE_ITEM rosidl_generate_interfaces_c_IDL_FILES ${_idl_file})
   endif()
@@ -78,6 +80,7 @@ set(target_dependencies
   "${rosidl_generator_c_TEMPLATE_DIR}/msg__functions.h.template"
   "${rosidl_generator_c_TEMPLATE_DIR}/msg__struct.h.template"
   "${rosidl_generator_c_TEMPLATE_DIR}/msg__type_support.h.template"
+  "${rosidl_generator_c_TEMPLATE_DIR}/srv.h.template"
   ${rosidl_generate_interfaces_c_IDL_FILES}
   ${_dependency_files})
 foreach(dep ${target_dependencies})
