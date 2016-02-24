@@ -46,7 +46,7 @@ foreach(_extension IN LISTS AMENT_EXTENSIONS_rosidl_generate_interfaces)
 endforeach()
 
 if("${_typesupport_impls} " STREQUAL " ")
-  message(WARNING "No valid typesupport implementations found.")
+  message(WARNING "No valid typesupport for Python message generator. Python messages will not be generated.")
   return()
 endif()
 
