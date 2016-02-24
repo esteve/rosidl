@@ -52,7 +52,6 @@ foreach(_idl_file ${rosidl_generate_interfaces_c_IDL_FILES})
     list(APPEND _generated_srv_headers
       "${_output_path}/${_parent_folder}/${_header_name}.h"
     )
-
   else()
     list(REMOVE_ITEM rosidl_generate_interfaces_c_IDL_FILES ${_idl_file})
   endif()
