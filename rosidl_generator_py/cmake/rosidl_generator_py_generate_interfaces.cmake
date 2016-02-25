@@ -47,8 +47,10 @@ endforeach()
 
 if("${_typesupport_impls} " STREQUAL " ")
   message(WARNING "No valid typesupport for Python generator. Python messages will not be generated.")
+  set(rosidl_generator_py_typesupport_FOUND FALSE)
   return()
 endif()
+set(rosidl_generator_py_typesupport_FOUND TRUE)
 
 set(_output_path
   "${CMAKE_CURRENT_BINARY_DIR}/rosidl_generator_py/${PROJECT_NAME}")
