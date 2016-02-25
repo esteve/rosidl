@@ -40,10 +40,11 @@ if(AMENT_ENABLE_TESTING)
     "msg/Various.msg"
   )
 
-  include(cmake/register_py.cmake cmake/find_valid_typesupport.cmake)
+  include(cmake/register_py.cmake)
+  include(cmake/find_valid_typesupport.cmake)
 
   # If no message files were generated, skip the test.
-  find_valid_typesupport()
+  rosidl_generator_py_find_valid_typesupport()
   if(NOT "${typesupport_impls}" STREQUAL " ")
     set(rosidl_generator_py_DIR "${CMAKE_CURRENT_SOURCE_DIR}/cmake")
 
@@ -71,8 +72,8 @@ if(AMENT_ENABLE_TESTING)
 endif()
 
 ament_package(
-  CONFIG_EXTRAS "cmake/find_valid_typesupport.cmake
-    cmake/register_py.cmake"
+  CONFIG_EXTRAS "cmake/find_valid_typesupport.cmake"
+    "cmake/register_py.cmake"
     "rosidl_generator_py-extras.cmake.in"
 )
 
