@@ -26,7 +26,7 @@ find_package(PythonExtra MODULE)
 # TODO(esteve): force opensplice and connext C type supports only, uncomment
 # the following line when all typesupport implementations are ported to C
 #get_rmw_typesupport(_typesupport_impls ${rmw_implementation})
-rosidl_generator_py_find_valid_typesupport()
+rosidl_generator_py_find_valid_typesupport(_typesupport_impls)
 
 if("${_typesupport_impls} " STREQUAL " ")
   message(WARNING "No valid typesupport for Python generator. Python messages will not be generated.")

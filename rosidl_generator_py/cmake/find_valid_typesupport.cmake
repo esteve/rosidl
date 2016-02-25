@@ -12,11 +12,8 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-macro(rosidl_generator_py_find_valid_typesupport)
-  # TODO(esteve): force opensplice and connext C type supports only, uncomment
-  # the following line when all typesupport implementations are ported to C
-  #get_rmw_typesupport(_typesupport_impls ${rmw_implementation})
-  set(_typesupport_impls "")
+macro(rosidl_generator_py_find_valid_typesupport TYPESUPPORT)
+  set(${TYPESUPPORT} "")
   foreach(_extension IN LISTS AMENT_EXTENSIONS_rosidl_generate_interfaces)
     string(REPLACE ":" ";" _extension_list "${_extension}")
     list(LENGTH _extension_list _length)

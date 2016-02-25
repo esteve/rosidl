@@ -44,8 +44,8 @@ if(AMENT_ENABLE_TESTING)
   include(cmake/find_valid_typesupport.cmake)
 
   # If no message files were generated, skip the test.
-  rosidl_generator_py_find_valid_typesupport()
-  if(NOT "${typesupport_impls}" STREQUAL " ")
+  rosidl_generator_py_find_valid_typesupport(_typesupport_impls)
+  if(NOT "${_typesupport_impls} " STREQUAL " ")
     set(rosidl_generator_py_DIR "${CMAKE_CURRENT_SOURCE_DIR}/cmake")
 
     rosidl_generator_py_extras(
