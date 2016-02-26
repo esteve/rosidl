@@ -12,8 +12,8 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-macro(rosidl_generator_py_find_valid_typesupport TYPESUPPORT)
-  set(${TYPESUPPORT} "")
+macro(rosidl_generator_py_find_valid_typesupport TYPESUPPORT_IMPLS)
+  set(${TYPESUPPORT_IMPLS} "")
   foreach(_extension IN LISTS AMENT_EXTENSIONS_rosidl_generate_interfaces)
     string(REPLACE ":" ";" _extension_list "${_extension}")
     list(LENGTH _extension_list _length)
@@ -25,10 +25,10 @@ macro(rosidl_generator_py_find_valid_typesupport TYPESUPPORT)
     list(GET _extension_list 0 _pkg_name)
     list(GET _extension_list 1 _cmake_filename)
     if("${_pkg_name} " STREQUAL "rosidl_typesupport_opensplice_c ")
-      list(APPEND _typesupport_impls "rosidl_typesupport_opensplice_c")
+      list(APPEND ${TYPESUPPORT_IMPLS} "rosidl_typesupport_opensplice_c")
     endif()
     if("${_pkg_name} " STREQUAL "rosidl_typesupport_connext_c ")
-      list(APPEND _typesupport_impls "rosidl_typesupport_connext_c")
+      list(APPEND ${TYPESUPPORT_IMPLS} "rosidl_typesupport_connext_c")
     endif()
   endforeach()
 endmacro()

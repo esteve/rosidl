@@ -42,17 +42,20 @@ if(AMENT_ENABLE_TESTING)
   include(cmake/register_py.cmake)
   include(cmake/find_valid_typesupport.cmake)
 
+  set(rosidl_generator_py_DIR "${CMAKE_CURRENT_SOURCE_DIR}/cmake")
+
+  # Need to call extras before find_valid_typesupport, to register the extension
+  rosidl_generator_py_extras(
+    "${CMAKE_CURRENT_SOURCE_DIR}/bin/rosidl_generator_py"
+    "${CMAKE_CURRENT_SOURCE_DIR}/rosidl_generator_py/__init__.py"
+    "${CMAKE_CURRENT_SOURCE_DIR}/resource"
+  )
+
   # If no message files were generated, skip the test.
   rosidl_generator_py_find_valid_typesupport(_typesupport_impls)
-  if(NOT "${_typesupport_impls} " STREQUAL " ")
-    set(rosidl_generator_py_DIR "${CMAKE_CURRENT_SOURCE_DIR}/cmake")
-
-    rosidl_generator_py_extras(
-      "${CMAKE_CURRENT_SOURCE_DIR}/bin/rosidl_generator_py"
-      "${CMAKE_CURRENT_SOURCE_DIR}/rosidl_generator_py/__init__.py"
-      "${CMAKE_CURRENT_SOURCE_DIR}/resource"
-    )
-
+  if("${_typesupport_impls} " STREQUAL " ")
+    message(WARNING "No valid typesupport found for Python generator, skipping tests.")
+  else()
     rosidl_generate_interfaces(${PROJECT_NAME} ${message_files}
       SKIP_INSTALL
     )
