@@ -12,7 +12,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-macro(rosidl_generator_get_typesupports TYPESUPPORT_IMPLS)
+macro(rosidl_generator_py_get_typesupports TYPESUPPORT_IMPLS)
   set(${TYPESUPPORT_IMPLS} "")
   foreach(_extension IN LISTS AMENT_EXTENSIONS_rosidl_generate_interfaces)
     string(REPLACE ":" ";" _extension_list "${_extension}")
