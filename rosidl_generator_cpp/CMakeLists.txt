@@ -40,6 +40,8 @@ if(BUILD_TESTING)
     "msg/UnboundedArrayBounded.msg"
     "msg/UnboundedArrayStatic.msg"
     "msg/UnboundedArrayUnbounded.msg"
+
+    "msg/Various.msg"
   )
 
   include(cmake/register_cpp.cmake)
@@ -53,6 +55,7 @@ if(BUILD_TESTING)
 
   rosidl_generate_interfaces(${PROJECT_NAME} ${message_files}
     SKIP_INSTALL
+    ADD_LINTER_TESTS
   )
 
   if(NOT WIN32)
