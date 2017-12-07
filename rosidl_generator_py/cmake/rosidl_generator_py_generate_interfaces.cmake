@@ -23,6 +23,11 @@ find_package(PythonInterp 3.5 REQUIRED)
 find_package(python_cmake_module REQUIRED)
 find_package(PythonExtra MODULE REQUIRED)
 
+# Default to C11
+if(NOT CMAKE_C_STANDARD)
+  set(CMAKE_C_STANDARD 11)
+endif()
+
 # Get a list of typesupport implementations from valid rmw implementations.
 rosidl_generator_py_get_typesupports(_typesupport_impls)
 
