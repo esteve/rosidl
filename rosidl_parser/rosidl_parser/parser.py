@@ -137,6 +137,8 @@ def extract_content_from_ast(tree):
             typedefs[identifier] = abstract_type
 
     struct_defs = list(tree.find_data('struct_def'))
+    print('STRUCT DEFS')
+    print(struct_defs)
     if len(struct_defs) == 1:
         msg = Message(Structure(NamespacedType(
             namespaces=get_module_identifier_values(tree, struct_defs[0]),
@@ -253,7 +255,7 @@ def extract_content_from_ast(tree):
 
     else:
         assert False, \
-            'Currently only .idl files with 1 (a message), 2 (a service) ' \
+            'Currently only FOO.idl files with 1 (a message), 2 (a service) ' \
             'and 3 (an action) structures are supported'
 
     return content
